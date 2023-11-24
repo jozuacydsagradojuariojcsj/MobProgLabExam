@@ -10,6 +10,8 @@ class MyApp extends StatelessWidget {
 
   List names=['Jonathan Juario', 'Maria Corazon Juario','Jozua Cyd Juario'];
 
+  MyApp({super.key});
+
   int countLetters(names){
     int counting = names.length;
     return counting;
@@ -24,21 +26,22 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          leading: Icon(Icons.message),
-          title: Text("ListView Builder"),
+          leading: const Icon(Icons.message),
+          title: const Text("ListView Builder"),
         ),
-        body: ListView(
-          children:[
-            for(String name in names)
-              ListTile(
-                leading:Icon(Icons.lock),
-                title: Text(name),
-                subtitle:Text(countLetters(name).toString()+' '+"letters"),
+        body: ListView.builder(
+          itemCount: names.length,
+            itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title:Text(names[index]),
+                    leading:const Icon(Icons.lock),
+                    subtitle:Text(countLetters(names[index]).toString()+' '+"letters"),
+                  );
+                }
               )
-          ],
         ),
-      ),
-    );
+      );
+
   }
 }
 
