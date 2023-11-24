@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
 
   List names=['Jonathan Juario', 'Maria Corazon Juario','Jozua Cyd Juario'];
 
-  int countLetters(str){
-    int counting = str.length;
+  int countLetters(names){
+    int counting = names.length;
     return counting;
   }
   @override
@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
             for(String name in names)
               ListTile(
                 leading:Icon(Icons.lock),
+                title: Text(name),
                 subtitle:Text(countLetters(name).toString()+' '+"letters"),
               )
           ],
